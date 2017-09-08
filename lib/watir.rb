@@ -1,4 +1,5 @@
 require 'selenium-webdriver'
+require 'watir/extensions/response'
 
 require 'watir/legacy_wait'
 require 'watir/wait'
