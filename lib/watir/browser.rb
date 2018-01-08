@@ -54,6 +54,7 @@ module Watir
 
       @after_hooks = AfterHooks.new(self)
       @closed = false
+      @quit = false
       @default_context = true
     end
 
@@ -140,10 +141,15 @@ module Watir
 
     def close
       return if @closed
-      @driver.quit
+      @driver.close
       @closed = true
     end
-    alias_method :quit, :close # TODO: close vs quit
+
+    def quit
+      return if @quit
+      @driver.quit
+      @quit = true
+    end
 
     #
     # Handles cookies.
